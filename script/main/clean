@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+echo "Cleaning vexyz projects..."
+
+for project in ./vexyz_*; do
+  [[ "$project" =~ [^/]*/(.*) ]]
+  name="${BASH_REMATCH[1]}"
+
+  echo "Cleaning $name."
+
+  cd "$project"
+  rm -rf target
+  rm -rf gen/target
+  cd ..
+done

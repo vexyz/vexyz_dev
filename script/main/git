@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+echo "Running git for vexyz projects..."
+
+for project in ./vexyz_*; do
+  [[ "$project" =~ [^/]*/(.*) ]]
+  name="${BASH_REMATCH[1]}"
+
+  echo ""
+  echo "Project $name:"
+
+  cd "$project"
+  git "$@"
+  cd ..
+done

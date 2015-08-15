@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+echo "Cloning extras..."
+
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+targets=$(cat "$dir/targets")
+
+for target in $targets; do
+  [[ "$target" =~ ([^\|]*)\|(.*) ]]
+  repo="${BASH_REMATCH[1]}"
+  branch="${BASH_REMATCH[2]}"
+
+  [[ "$repo" =~ [^/]*/(.*) ]]
+  project="${BASH_REMATCH[1]}"
+  name="xtra_$project"
+  if [ "$name" == "xtra_vexyz.github.io" ]; then
+    name="xtra_website"
+  fi
+
+  echo ""
+  git clone "$repo" "$name"
+  cd "$name"
+  git checkout "$branch"
+  cd ..
+done
