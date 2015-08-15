@@ -13,6 +13,6 @@ name="$(basename "$PWD")"
 timestamp="$(date +%Y%m%d_%H%M%S)"
 dest="$HOME/Dropbox/Backup/$name-$timestamp.tar.gz"
 
-tar --exclude='*/.git' --exclude='*/target' -zcvf "$dest" "."
+tar --exclude='xtra_website' --exclude='*/.git' --exclude='*/target' -zcvf "$dest" "."
 
 echo "Done."
