@@ -3,7 +3,7 @@ set -e
 
 echo "Running git for extras..."
 
-for project in ./xtra.vexyz*; do
+for project in ./xtra_*; do
   [[ "$project" =~ [^/]*/(.*) ]]
   name="${BASH_REMATCH[1]}"
 

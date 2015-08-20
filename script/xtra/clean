@@ -9,7 +9,7 @@ for project in ./xtra_*; do
 
   echo "Cleaning $name."
 
-  if [ "$name" == "xtra_vexyz.github.io" ]; then
+  if [ "$name" == "xtra_website" ]; then
     cd "$project"
     # Nothing to do yet.
     cd ..
